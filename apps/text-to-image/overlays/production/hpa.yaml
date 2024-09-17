@@ -1,18 +1,14 @@
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
+@"
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
 metadata:
   name: text-to-image-app
+  namespace: flux-system
 spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: text-to-image-app
-  minReplicas: 1
-  maxReplicas: 5
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 80
+  interval: 5m
+  path: ./apps/text-to-image/overlays/production
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: text-to-image-source
+"@ | Out-File -FilePath clusters\my-cluster\text-to-image-kustomization.yaml -Encoding utf8
