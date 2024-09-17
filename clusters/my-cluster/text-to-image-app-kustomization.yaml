@@ -1,0 +1,12 @@
+﻿apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: text-to-image-app
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./apps/text-to-image/overlays/production
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: text-to-image-source
