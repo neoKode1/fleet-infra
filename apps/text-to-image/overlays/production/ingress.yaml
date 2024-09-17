@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: text-to-image-app
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: text-to-image.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: text-to-image-app
+            port: 
+              number: 80
