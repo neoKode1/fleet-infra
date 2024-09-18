@@ -1,7 +1,8 @@
-apiVersion: apps/v1
+﻿apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: text-to-image-app
+  namespace: default  # Add this line to specify the namespace
 spec:
   replicas: 1
   selector:
@@ -14,13 +15,6 @@ spec:
     spec:
       containers:
       - name: text-to-image-app
-        image: your-docker-registry/text-to-image-app:latest
+        image: your-image-name:tag  # Replace with your actual image
         ports:
         - containerPort: 8080
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 500m
-            memory: 512Mi
