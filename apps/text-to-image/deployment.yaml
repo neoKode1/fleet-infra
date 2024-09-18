@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: text-to-image
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: text-to-image
+  template:
+    metadata:
+      labels:
+        app: text-to-image
+    spec:
+      containers:
+      - name: text-to-image
+        image: your-text-to-image-image:tag
+        ports:
+        - containerPort: 8080
