@@ -1,4 +1,4 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+﻿apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: text-to-image-source
@@ -8,8 +8,3 @@ spec:
   url: https://github.com/neoKode1/fleet-infra
   ref:
     branch: main
-  ignore: |
-    # exclude all
-    /*
-    # include only the text-to-image directory
-    !/apps/text-to-image/
